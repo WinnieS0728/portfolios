@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.fixedheader{
+    position: sticky;
+    top: 0;
+}
+.header {
+    height: 3rem;
+    margin-top: 1rem;
+    display: grid;
+    .newThing{
+        display: flex;
+        align-items: center;
+        border: 2px solid skyblue;
+    }
+}
+    .multyDone{
+        display: flex;
+        align-items: center;
+        border: 2px solid green;
+        padding: 5px 10px;
+    }
+    .multyDelete{
+        display: flex;
+        align-items: center;
+        border: 2px solid red;
+        padding: 5px 10px;
+    }
+
+.toDoBoard {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 0;
+
+    .doneBtn {
+        color: green;
+
+        button{
+            padding: 5px 8px;
+        }
+        .no {
+            color: green;
+            border: 1px solid green;
+            background-color: #000;
+        }
+    }
+
+    .deleteBtn {
+
+        span {
+            padding: 5px 8px;
+            background-color: #000;
+            color: red;
+            border: 1px solid red;
+        }
+    }
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/toDoList.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{ data }}
+        {{ filterData }} -->
+        <header class="fixedheader container bg-light">
+            <section class="header container border my-3">
+                <div class="row">
+                    <input type="text" class="col" placeholder="title" v-model="this.newData.title">
+                    <button class="newThing col-auto" type="button" @click="addItem()">新增事項</button>
+            </section>
+
+            <section class="container border-bottom pb-3">
+                <div class="row align-items-center">
+                    <div class="col-12 mb-3 col-md-auto mb-md-0">
+                        <div class="row">
+                            <div class="tags col col-md-auto" @click="this.tab = 'all'">全部</div>
+                            <div class="tags col col-md-auto" @click="this.tab = 'done'">已完成</div>
+                            <div class="tags col col-md-auto" @click="this.tab = 'no'">未完成</div>
+                            <div class="tags col col-md-auto" @click="this.tab = 'deleted'">垃圾桶</div>
+                            <div @click="upload()">upload</div>
+                            <div @click="download()">download</div>
+                        </div>
+                    </div>
+                    <div class="col-auto ms-auto">
+                        <div class="row">
+                            <button class="multyDone col-auto" type="button" @click="doneMultiItem()">完成多筆
+                            </button>
+                            <button class="multyDelete col-auto" type="button" @click="deleteMultiItem()">刪除多筆
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bar container-fluid">
+                <div class="row align-items-center py-2">
+                    <div class="col-2 col-sm-1 text-center">#</div>
+                    <div class="col-2 col-sm-1 text-center">選取</div>
+                    <div class="col col-sm">title</div>
+                    <div class="col col-sm">狀態</div>
+                    <div class="col col-sm-auto col-lg-2 text-center">編輯</div>
+                    <div class="col col-sm-auto col-lg-2 text-center" v-if="this.tab == 'deleted'">復原</div>
+                    <div class="col col-sm-auto col-lg-2 text-center" v-else>刪除</div>
+                </div>
+            </section>
+        </header>
+        <section class="list container">
+            <div v-for="(item , index) in filterData" :key="item.id" class="toDoBoard row align-items-center">
+                <div class="no col-2 col-sm-1 text-center">
+                    {{index + 1}}
+                </div>
+                <div class="checkBox col-2 col-sm-1 text-center">
+                    <input type="checkbox" name="" id="" @click="checkOrNotCheck(item , index)" class="col" :checked="item.checked">
+                </div>
+                <div class="title col-8 mb-3 col-sm mb-sm-0">
+                    {{item.title}}
+                </div>
+                <div class="state col ms-auto text-center col-sm text-sm-start"
+                    :class="{'red':item.doneBtn == 'unchecked', 'green':item.doneBtn == 'checked'}">
+                    <span v-if="item.state == 'done'">
+                        已完成
+                    </span>
+                    <span v-else>
+                        未完成
+                    </span>
+                </div>
+                <div class="doneBtn col-auto col-sm-auto col-lg-2 text-center">
+                    <span v-if="item.doneBtn == 'checked'">
+                        完成
+                    </span>
+                    <button v-else class="no" @click="done(item)">
+                        完成
+                    </button>
+
+                </div>
+                <div class="deleteBtn col-auto col-sm-auto col-lg-2 text-center">
+                    <button type="button">
+                        <span v-if="this.tab == 'deleted'" @click="undoDelete(item)">
+                            復原
+                        </span>
+                        <span v-else @click="deleteItem(item)">
+                            刪除
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    tab: 'all',
+                    data: JSON.parse(localStorage.getItem('dataList')) ?? [
+                        {
+                            id: 1,
+                            title: 'example (undone)',
+                            doneBtn: 'unchecked',
+                            isDelete: false,
+                        },
+                        {
+                            id: 2,
+                            title: 'example (done)',
+                            doneBtn: 'checked',
+                            isDelete: false,
+                        },
+                    ],
+                    newData: {
+                        doneBtn: 'unchecked',
+                        isDelete: false,
+                    },
+                    checkedData: [
+                    ],
+                }
+            },
+            methods: {
+                done(item) {
+                    item.doneBtn = "checked"
+                },
+                deleteItem(item) {
+                    item.isDelete = true;
+                },
+                addItem() {
+                    this.newData.id = this.data.length + 1;
+                    if (!this.newData.title) {
+                        this.newData.title = '未命名'
+                    }
+                    this.data.push(this.newData);
+                    this.newData = {
+                        doneBtn: 'unchecked',
+                        isDelete: false,
+                    }
+
+                },
+                undoDelete(item) {
+                    item.isDelete = false;
+                },
+                checkOrNotCheck(item) {
+                    // 複製array
+
+                    // if (!item.checked) {
+                    //     this.checkedData.push(item.id);
+                    // } else {
+                    //     this.checkedData.splice(this.checkedData.indexOf(item.id), 1);
+                    // }
+                    item.checked = !item.checked;
+                },
+                doneMultiItem() {
+                    // 資料判斷
+                    this.data.forEach((item) => {
+                        if (item.checked) {
+                            item.doneBtn = 'checked';
+                        }
+                    })
+
+                    // 複製array
+
+                    // this.checkedData.forEach((id) => {
+                    //     this.data.findIndex((item) => {
+                    //         item.id == id
+                    //     })
+                    //     let checkItem = this.data[this.data.findIndex((item) => {
+                    //         return item.id == id
+                    //     })]
+                    //     checkItem.doneBtn = 'checked';
+                    // })
+                },
+                deleteMultiItem() {
+                    // 資料判斷
+                    this.data.forEach((item) => {
+                        if (item.checked) {
+                            item.isDelete = true;
+                        }
+                    })
+
+                    // 複製array
+
+                    // console.log(this.checkedData);
+                    // this.checkedData.forEach((id) => {
+                    //     this.data.findIndex((item) => {
+                    //         item.id == id
+                    //     })
+                    //     console.log(this.data.findIndex((item) => {
+                    //         return item.id == id
+                    //     }));
+                    //     let checkItem = this.data[this.data.findIndex((item) => {
+                    //         return item.id == id
+                    //     })]
+                    //     checkItem.isDelete = true;
+                    //     this.checkedData = [];
+                    // })
+                },
+                upload() {
+                    console.log('upload');
+                    localStorage.setItem('dataList', JSON.stringify(this.data))
+                },
+                download() {
+                    console.log('download');
+                    JSON.parse(localStorage.getItem('dataList'))
+                    console.log(JSON.parse(localStorage.getItem('dataList')));
+                    this.data = JSON.parse(localStorage.getItem('dataList'));
+                },
+            },
+            computed: {
+                filterData() {
+                    return this.data.filter((item) => {
+                        if (this.tab == 'all') {
+                            return item.isDelete == false;
+                        } else if (this.tab == 'done') {
+                            return item.doneBtn == 'checked' && item.isDelete == false;
+                        } else if (this.tab == 'no') {
+                            return item.doneBtn == 'unchecked' && item.isDelete == false;
+                        } else if (this.tab == 'deleted') {
+                            return item.isDelete == true;
+                        }
+                    })
+                },
+            },
+            watch: {
+                data: {
+                    handler: function () {
+                        console.log('upload');
+                        localStorage.setItem('dataList', JSON.stringify(this.data))
+                    },
+                    immediate:true,
+                    deep:true,
+                },
+            },
+            mounted() {
+
+            },
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

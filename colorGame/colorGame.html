@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/colorGame.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <audio class="correct_wav" src="./audio/Correct Sound Effects All Sounds (mp3cut.net).mp3"></audio>
+    <audio class="wrong_wav" src="./audio/Wrong Sound Effects All Sounds (mp3cut.net).mp3"></audio>
+    <audio class="bgm_wav" src="./audio/可愛BGM分享24.mp3"></audio>
+    <div class="container">
+        <section class="top">
+            <div class="level">
+                <div class="stage">STAGE
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="score">SCORE
+                    <span></span>
+                </div>
+            </div>
+        </section>
+        <div class="board">
+            <div class="color-box stage0 start answer">
+                <img src="./img/2.png" alt="">
+            </div>
+        </div>
+        <section class="bot">
+            <div class="time"></div>
+            <div class="control">
+                <div class="pauseBtn">pause</div>
+                <div class="onMute">
+                    <img class="soundOn" src="./img/soundOn.gif" alt="">
+                    <img class="soundMute none" src="./img/mute.png" alt="">
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="pauseBoard">
+        <img class="active" src="./img/3.gif" alt="">
+        <audio src="./audio/never-gonna-give-you-up-official-music-video (mp3cut.net).mp3"></audio>
+    </div>
+    <div class="overBoard">
+        <div class="gameOver">
+            <img src="./img/1.png" alt="">
+        </div>
+        <a href="">PLAY AGAIN</a>
+    </div>
+
+
+
+
+
+    <script src="./js/colorGame.js"></script>
+</body>
+
+</html>

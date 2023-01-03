@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/weather.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="tags">
+        <div class="tag all">全區</div>
+        <div class="tag north">北部</div>
+        <div class="tag mid">中部</div>
+        <div class="tag south">南部</div>
+        <div class="tag east">東部</div>
+        <div class="tag out">離島</div>
+    </nav>
+    <nav class="locate">
+
+    </nav>
+
+    <section class="taiwan">
+        <img src="./img/taiwan/all.svg" alt="">
+    </section>
+
+    <section class="showCards">
+        <section class="more">
+            <section class="showCard time">
+            </section>
+            <section class="showCard come">
+                資料來源 : 政府資料開放平臺
+            </section>
+        </section>
+        <section class="info">
+            <section class="showCard rain">
+                <p>降雨機率</p>
+                <span>%</span>
+            </section>
+            <section class="showCard temperature">
+                <p class="low temp">最高溫</p>
+                <span>°C</span>
+                <p>~</p>
+                <p class="hi temp">最低溫</p>
+                <span>°C</span>
+            </section>
+            <section class="showCard weatherIcon">
+                <p>天氣概況</p>
+            </section>
+        </section>
+    </section>
+    <section class="weatherAnimate">
+        <div class="rainy">
+            <div class="rainning"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="sunny">
+            <div class="sun"></div>
+        </div>
+        <div class="cloudy">
+        </div>
+    </section>
+
+
+
+
+    <script src="./js/weather.js"></script>
+</body>
+
+</html>
