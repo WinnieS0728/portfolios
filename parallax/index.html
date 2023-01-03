@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../fontawesome/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.min.css">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', cursive;
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #top-img {
+            width: 100%;
+            height: 100vh;
+            background-image: url('./img/1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            background-position: 0% 20%;
+            opacity: 0.8;
+        }
+
+        .title {
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            letter-spacing: 5px;
+            background-color: #111;
+            padding: 10px 30px;
+            border-radius: 15px;
+        }
+
+        #mid-text {
+            font-size: 20px;
+        }
+
+        #mid-text h3 {
+            text-align: center;
+            font-size: 40px;
+            letter-spacing: 3px;
+        }
+
+        #mid-text p {
+            padding: 0 150px;
+            line-height: 25px;
+            letter-spacing: 0.5px;
+            word-spacing: 3px;
+            text-indent: 53px;
+        }
+
+        #mid-img {
+            width: 100%;
+            height: 40vh;
+            background-image: url('./img/2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 0% 50%;
+            position: relative;
+        }
+
+        #mid-img .title {
+            background-color: unset;
+            letter-spacing: 10px;
+            word-spacing: 15px;
+        }
+
+        #img3 {
+            width: 100%;
+            height: 40vh;
+            background-image: url('./img/3.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        #text-1 {
+            font-size: 25px;
+            padding: 20px 100px;
+        }
+
+        #img3 .title {
+            background-color: unset;
+            letter-spacing: 10px;
+            word-spacing: 15px;
+        }
+
+        #bot-img {
+            width: 100%;
+            height: 100vh;
+            background-image: url('./img/4.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        #bot-img .title {
+            padding: 10px 50px;
+        }
+
+        #nav {
+            width: 100%;
+            height: 50px;
+            background-color: #111;
+            position: fixed;
+            z-index: 1;
+            line-height: 50px;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        #nav a {
+            padding: 0 50px;
+            color: white;
+            text-decoration: none;
+        }
+
+        #go1 {
+            width: 100%;
+            height: 0px;
+            background-color: red;
+            position: relative;
+            top: -450px;
+        }
+
+        #go2 {
+            width: 100%;
+            height: 0px;
+            background-color: red;
+            position: relative;
+            top: -300px;
+        }
+
+        #triggar {
+            width: 200px;
+            height: 90px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #modal {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+
+        #modal-all {
+            width: 500px;
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #modal:target {
+            display: block;
+        }
+
+        #head {
+            width: 100%;
+            height: 100px;
+            background-color: darkgray;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+            letter-spacing: 10px;
+        }
+        #head a{
+            color: black;
+            font-size: 30px;
+            float: right;
+            padding: 0 10px;
+            margin-right: 20px;
+        }
+        #containt {
+            width: 100%;
+            height: 200px;
+            background-color: azure;
+            text-align: center;
+            line-height: 200px;
+            font-size: 50px;
+            letter-spacing: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="web">
+        <div id="nav">
+            <a href="#top-img">Sun Rise</a>
+            <a href="#go1">Day</a>
+            <a href="#go2">Sun Rise</a>
+            <a href="#bot-img">Star</a>
+        </div>
+        <div id="top-img">
+            <div class="title">SCROLL DOWN</div>
+        </div>
+        <div id="mid-text">
+            <h3>PARALLAX DEMO</h3>
+            <p>
+                Parallax scrolling is a web site trend where the background content is moved at a different speed than
+                the
+                foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at,
+                sed
+                posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis
+                blandit
+                dignissim. Viverra interdum mi magna mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur
+                aliquam
+                pede, nullam vitae eu placerat eget et vehicula. Varius quisque non molestie dolor, nunc nisl dapibus
+                vestibulum
+                at, sodales tincidunt mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla
+                vulputate
+                at quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione interdum
+                sociis
+                ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue etiam maecenas, porta
+                porttitor
+                placerat leo.
+            </p>
+
+        </div>
+        <div id="mid-img">
+            <div id="go1"></div>
+            <div class="title">LESS Hight</div>
+        </div>
+        <div id="text-1">
+            <p>
+                Scroll up and down to really get the feeling of how Parallax Scrolling works.
+            </p>
+
+        </div>
+        <div id="img3">
+            <div id="go2"></div>
+            <div class="title">SCROLL UP</div>
+        </div>
+        <div id="text-1">
+            <p>
+                Scroll up and down to really get the feeling of how Parallax Scrolling works.
+            </p>
+
+        </div>
+        <div id="bot-img">
+            <div class="title">cool</div>
+            <a href="#modal">
+                <div id="triggar"></div>
+            </a>
+        </div>
+
+        <div id="modal">
+            <div id="modal-all">
+                <div id="head">
+                    WOW
+                    <a href="">
+                        <i class="fa-solid fa-xmark"></i>
+                    </a>
+                </div>
+                <div id="containt">
+                    SO COOL
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-1 {
+    width: 500px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: bisque;
+    padding: 50px;
+
+    h2 {
+        text-align: center;
+    }
+
+    .block {
+        display: flex;
+        margin-top: 50px;
+        gap: 20px;
+
+        .number {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btns {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            gap: 10px;
+
+            & input {
+                padding: 2px 5px;
+            }
+        }
+    }
+
+}
+.card-2{
+    width: 500px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    border-radius: 16px;
+    background-color: bisque;
+    gap: 20px;
+    padding-left: 50px;
+    height: 0;
+    // overflow: hidden;
+    transition: 1s;
+
+    &>div{
+        opacity: 0;
+        padding-left: 30px;
+    }
+    .bmi , .level , .todo{
+        display: flex;
+        align-items: center;
+        &>p{
+            margin: 0;
+            margin-left: 30px;
+        }
+    }
+    .bmi p{
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+    .bmi{
+        transition: 0.5s 0.2s;
+    }
+    .level{
+        transition: 0.5s 0.4s;
+    }
+    .todo{
+        transition: 0.5s 0.6s;
+    }
+}
+.active{
+    height: 200px;    
+}
+.card-2 .animate{
+    opacity: 1;
+}
+
+
