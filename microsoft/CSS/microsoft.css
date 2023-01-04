@@ -48,11 +48,11 @@ input[type="checkbox"] {
 }
 
 .learn-text.focus:focus {
-    outline: 2px dashed #0067b8;
+    outline: 2px dashed #950c17;
 }
 
 #shop-icon .focus:focus {
-    outline: 2px dashed #0067b8;
+    outline: 2px dashed #950c17;
 }
 
 .learn-btn a.focus:focus {
@@ -73,24 +73,25 @@ input[type="checkbox"] {
     padding: 4px 12px;
     display: inline-block;
     font-weight: 600;
-    background-color: #ffb900;
+    background-color: #950c17;
+    color: #fff;
 }
 
 .learn-btn a {
     display: inline-block;
     margin: 8px 24px 8px 0;
     padding: 10px 14px;
-    background-color: #0067b8;
+    background-color: #000;
     color: #FFF;
 }
 
 .learn-btn a:hover {
-    background-color: #005ca5;
+    background-color: #950c17;
 }
 
 .learn-text {
     display: inline-block;
-    color: #0067b8;
+    color: #950c17;
     padding-right: 10px;
     font-weight: 600;
 }
@@ -164,7 +165,6 @@ input[type="checkbox"] {
     justify-content: space-around;
     align-items: center;
     margin: 2px auto;
-    padding: 0 5% ;
     color: #262626;
     font-size: 13px;
 }
@@ -365,9 +365,10 @@ label[for="links-checkbtn"] i {
 }
 
 .banner-title {
+    width: 600px;
     position: absolute;
     bottom: calc(100% / 2);
-    left: 60%;
+    left: 10%;
     transform: translate(0, 50%);
 }
 
@@ -375,8 +376,10 @@ label[for="links-checkbtn"] i {
     width: 40%;
     position: absolute;
     bottom: calc(100% / 2);
-    left: 10%;
+    left: 8%;
     transform: translate(0, 50%);
+    background-color: #fff;
+    padding: 3rem;
 }
 
 #learn-group {
@@ -447,7 +450,7 @@ label[for="links-checkbtn"] i {
 
 #shop-icon a {
     font-size: 16px;
-    color: #0067b8;
+    color: #950c17;
     line-height: 30px;
     text-decoration: underline;
 }
